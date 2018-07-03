@@ -1,30 +1,28 @@
 <template>
   <div class="">
-    <input type="text" v-model="userID">
-    <button @click="onLoadUser">Go to link</button>
     <nuxt-link to="/posts/1" class="btn">Holi</nuxt-link>
     <nuxt-link to="/posts/2" class="btn">Holi</nuxt-link>
-    <PostList />
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import PostList from '~/components/Posts/PostList.vue'
 
 export default {
   components: {
-    Logo,
     PostList
   },
   data() {
     return {
-      userID: ''
-    }
-  },
-  methods: {
-    onLoadUser() {
-      this.$router.push('/posts/' + this.userID);
+      loadedPosts: [
+        {
+          id: '1',
+          title: "First Post",
+          previewText: 'This is our post',
+          thumbnail: 'https://d1bvpoagx8hqbg.cloudfront.net/originals/experiencia-erasmus-zaragoza-espana-marie-3ff9c03b590bf673030179f08c7e5dd4.jpg'
+        }
+      ]
     }
   }
 }
